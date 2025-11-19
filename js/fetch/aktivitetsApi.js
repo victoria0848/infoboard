@@ -102,8 +102,8 @@ function makeCard(item, now) {
         <div class="schedule-card ${eduClass}">
             <div class="schedule-row">
                 <div class="schedule-title">${subject}</div>
-                ${room ? `<div class="schedule-room">${room}</div>` : ""}
-                ${team ? `<div class="schedule-team">${team}</div>` : ""}
+               <div class="schedule-room">${room}</div>
+               <div class="schedule-team">${team}</div>
                 <div class="schedule-status">${statusText}</div>
             </div>
         </div>
