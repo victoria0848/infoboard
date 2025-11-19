@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="/js/fetch/menuApi.js"> </script>
+    <script defer src="/js/fetch/rejsePlanApi.js"></script>
+    <script defer src="/js/fetch/tv2Api.js"></script>
+    <script defer src="/js/fetch/vejrTidDatoApi.js"></script>
+    <script defer src="/js/fetch/aktivitetsApi.js"></script>
+    <script defer src="/js/fetch/vejr.js"></script>
+    <link rel="stylesheet" href="/assets/css/styleSheet.css">
+
+</head>
+<body>
+  <div id="news"></div>
+
+  <div id="departures">
+  </div>
+
+  <div id="getCopenhagenTime"></div>
+
+  <!-- Nu tre små bokse side om side -->
+<div id="getCopenhagenSubRow">
+  <div id="getCopenhagenDate">13/11/2025</div>
+  <div id="weather">
+    <div class="weather-city">AALBORG</div>
+    <div class="weather-icon">☁️</div>
+    <div class="weather-temp">10.9°C</div>
+  </div>
+  <div id="wc">
+  <div class="wc-icon wc-mail">
+    <!-- Mail SVG inline -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22" fill="none">
+      <path d="M0 3.66667C0 2.69421 0.34241 1.76157 0.951903 1.07394C1.5614 0.386308 2.38805 0 3.25 0H22.75C23.612 0 24.4386 0.386308 25.0481 1.07394C25.6576 1.76157 26 2.69421 26 3.66667V18.3333C26 19.3058 25.6576 20.2384 25.0481 20.9261C24.4386 21.6137 23.612 22 22.75 22H3.25C2.38805 22 1.5614 21.6137 0.951903 20.9261C0.34241 20.2384 0 19.3058 0 18.3333V3.66667ZM18.9573 7.13167C20.0655 7.13167 20.8081 7.99333 20.8861 9.16117H22.75V8.9595C22.6639 6.78333 21.086 5.29283 18.9443 5.29283C16.3377 5.29283 14.8525 7.21783 14.8525 10.3363V11.7058C14.8525 14.8225 16.3231 16.7108 18.9443 16.7108C21.0795 16.7108 22.6574 15.2588 22.75 13.156V12.947H20.8861C20.8081 14.0745 20.0785 14.872 18.9573 14.872C17.5939 14.872 16.8155 13.7353 16.8155 11.7058V10.3455C16.8155 8.30683 17.6085 7.13167 18.9573 7.13167ZM8.90175 8.82933H8.97325L10.6307 16.5H12.2655L14.625 5.50183H12.7042L11.3717 13.486H11.2808L9.70125 5.50183H8.17375L6.59425 13.486H6.50813L5.16425 5.50183H3.25L5.6095 16.5H7.24262L8.90175 8.82933Z" fill="#293646"/>
+    </svg>
+  </div>
+  <div class="wc-icon wc-arrow">
+    <!-- Arrow SVG inline -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="44" viewBox="0 0 54 44" fill="none">
+      <g clip-path="url(#clip0)">
+        <path d="M11.25 22L42.75 22M11.25 22L20.5 12.75M11.25 22L20.5 31" stroke="#293646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0">
+          <rect width="44" height="54" fill="white" transform="translate(0 44) rotate(-90)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+</div>
+  </div>
+</div>
+
+  <div id="menu"></div>
+  <div id="content"></div>
+</body>
+</html>
