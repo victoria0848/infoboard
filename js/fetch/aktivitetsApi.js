@@ -81,6 +81,9 @@ function getEducationClass(item) {
     // NEW
     if (text.includes("dataservice")) return "edu-dataservice";
     if (text.includes("studie")) return "edu-studietid";
+    if (text.includes("bonusfag")) return "edu-bonusfag";
+
+        
 
     return ""; // default
 }
