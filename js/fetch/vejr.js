@@ -27,7 +27,7 @@ async function displayWeather() {
 
         // MATCHER DIT CSS: lille panel med ikon + temp
         el.innerHTML = `
-            <span class="weather-temp">${temp}°C</span>
+            <h2 class="weather-temp">${temp}°C</h2>
         `;
         
     } catch (err) {
