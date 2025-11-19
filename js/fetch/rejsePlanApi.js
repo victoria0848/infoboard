@@ -63,7 +63,7 @@ async function displayDepartures() {
       })
       .filter(dep => dep && dep.depDateTime > dep.localNow)
       .sort((a, b) => a.depDateTime - b.depDateTime)
-      .slice(0, 6);
+      .slice(0, 9);
 
     // --- Render ---
     if (!futureDepartures.length) {
