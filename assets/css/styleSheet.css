@@ -293,7 +293,6 @@ body{
 }
 #content .schedule-card div {
   width: 100%;
-  margin-top: 0.5rem;
 }
 #content .schedule-card .schedule-status {
   display: flex;
@@ -304,7 +303,7 @@ body{
 #content .schedule-card .schedule-team {
   display: flex;
   justify-content: left;
-  margin-left: 8rem;
+  margin-left: 6rem;
 
 }
 #content .schedule-card .schedule-room {
