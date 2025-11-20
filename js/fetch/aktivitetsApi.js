@@ -34,7 +34,7 @@ async function fetchSchedule() {
     }
 }
 
-/* --- Show Next 10 Lectures --- */
+/* --- Show Next Lectures --- */
 function displayNextLectures(data) {
     const content = document.getElementById('content');
 
@@ -52,23 +52,29 @@ function displayNextLectures(data) {
     scheduleData.sort((a, b) => new Date(a.StartDate) - new Date(b.StartDate));
 
     // Only FUTURE lectures
-    const futureLectures = scheduleData.filter(item => new Date(item.StartDate) > now);
+    let futureLectures = scheduleData.filter(item => new Date(item.StartDate) > now);
+
+    /* --- NEW FILTER: Only show these 3 categories --- */
+    const allowed = ["edu-praktik", "edu-grafisk", "edu-web"];
+    futureLectures = futureLectures.filter(item => {
+        const cls = getEducationClass(item);
+        return allowed.includes(cls);
+    });
 
     if (futureLectures.length === 0) {
         content.innerHTML = '<h1 class="section-title">🎓 Ingen kommende lektioner</h1>';
         return;
     }
 
-    // Take next 10 lectures
-    const next10 = futureLectures.slice(0, 9);
+    // Take next 8 lectures
+    const next8 = futureLectures.slice(0, 8);
 
     let html = `<h1 class="section-title">LOKALER</h1>`;
-    html += next10.map(item => makeCard(item, now)).join('');
+    html += next8.map(item => makeCard(item, now)).join('');
 
     content.innerHTML = html;
 }
 
-/* --- Build Lesson Card --- */
 /* --- Determine education color class --- */
 function getEducationClass(item) {
     const text = `${item.Subject || ""} ${item.Team || ""}`.toLowerCase();
@@ -78,38 +84,34 @@ function getEducationClass(item) {
     if (text.includes("web") || text.includes("webudvikler")) return "edu-web";
     if (text.includes("tryk")) return "edu-tryk";
 
-    // NEW
+    // Extra categories (not included in filter)
     if (text.includes("dataservice")) return "edu-dataservice";
     if (text.includes("studie")) return "edu-studietid";
     if (text.includes("bonusfag")) return "edu-bonusfag";
 
-        
-
-    return ""; // default
+    return "";
 }
 
-
-function makeCard(item, now) {
+/* --- Build Lesson Card --- */
+function makeCard(item) {
     const subject = item.Subject || "Ukendt fag";
     const room = item.Room ? `Lokale: ${item.Room}` : "";
     const team = item.Team ? `Hold: ${item.Team}` : "";
 
     const statusText = `kl. ${formatTime(item.StartDate)}`;
-
-    const eduClass = getEducationClass(item); // << NEW
+    const eduClass = getEducationClass(item);
 
     return `
         <div class="schedule-card ${eduClass}">
             <div class="schedule-row">
                 <div class="schedule-title">${subject}</div>
-               <div class="schedule-room">${room}</div>
-               <div class="schedule-team">${team}</div>
+                <div class="schedule-room">${room}</div>
+                <div class="schedule-team">${team}</div>
                 <div class="schedule-status">${statusText}</div>
             </div>
         </div>
     `;
 }
-
 
 /* --- Auto Refresh every minute --- */
 document.addEventListener('DOMContentLoaded', () => {

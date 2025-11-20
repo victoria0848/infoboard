@@ -5,19 +5,19 @@
   --outline-radius: 46px;
   --outline-offset: -12px;
 }
-
+ 
 /* GLOBAL STYLING */
-*{ 
-  box-sizing: border-box; 
-  margin:0; padding:0; 
-  font-family: "Inter", sans-serif; 
+*{
+  box-sizing: border-box;
+  margin:0; padding:0;
+  font-family: "Inter", sans-serif;
 }
-
-html, body{ 
-  height:100%; 
+ 
+html, body{
+  height:100%;
   overflow: hidden !important;
 }
-
+ 
 body{
   display: grid;
   height: 100vh;
@@ -30,30 +30,30 @@ body{
   grid-template-rows: 2fr 0.3fr 0.4fr;
   gap: 3rem;
   padding: 2rem;
-
+ 
   background: linear-gradient(to bottom right, rgba(222, 88, 48, 0.822), rgba(231, 194, 29, 0.584)),
               url("../images/75baa74374264b924c9496b4412e7088.gif") center/cover no-repeat;
   animation: slowMove 30s linear infinite;
   color: #111;
 }
-
+ 
 /* EVERY SECTION GETS PANEL STYLING + WHITE OUTLINE */
 #news, #content, #menu, #departures, #getCopenhagenTime, #getCopenhagenDate, #weather, #wc {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+ 
   background: var(--panel-bg);
   border-radius: var(--panel-radius);
   padding: 30px;
   border: 4px solid var(--panel-border);
-
+ 
   position: relative;
   z-index: 1;
   overflow: visible;
 }
-
+ 
 /* WHITE OUTLINE FOR ALL SECTIONS */
 #news::before,
 #content::before,
@@ -71,7 +71,7 @@ body{
   pointer-events: none;
   z-index: 0;
 }
-
+ 
 /* GRID AREA ASSIGNMENTS */
 #news { grid-area: news; }
 #departures { grid-area: departures; }
@@ -79,7 +79,7 @@ body{
 #getCopenhagenSubRow { grid-area: getCopenhagenSubRow; }
 #menu { grid-area: menu; }
 #content { grid-area: content; }
-
+ 
 /* -----------------------------
    SubRow container
 ------------------------------ */
@@ -92,7 +92,7 @@ body{
   padding: 12px 0; /* vertical padding smaller */
   overflow: visible;
 }
-
+ 
 /* Subrow panels: equal size */
 #getCopenhagenDate,
 #weather,
@@ -113,7 +113,7 @@ body{
 #weather span{
   font-weight: 700;
 }
-
+ 
 /* WC: two SVG icons inside */
 #wc {
   display: flex;
@@ -123,7 +123,7 @@ body{
   gap: 8px;
   padding: 0.4rem 1rem;
 }
-
+ 
 .wc-icon svg {
   display: block;
   width: auto;
@@ -132,37 +132,37 @@ body{
 .wc-arrow svg {
   height: 90%;   /* bigger than the mail icon */
 }
-
+ 
 .wc-mail svg {
   animation: wcBlink 3s infinite;
   width: auto;
 }
-
-@keyframes wcBlink { 
-  0%, 100% { opacity: 1; } 
-  50% { opacity: 0.4; } 
+ 
+@keyframes wcBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
-
+ 
 /* DATE PANEL */
-#getCopenhagenDate { 
-  font-size: 1.6rem; 
+#getCopenhagenDate {
+  font-size: 1.6rem;
   font-weight: 400;  
-  text-align: center; 
+  text-align: center;
 }
-
+ 
 /* WEATHER PANEL */
-#weather { 
-  font-size: 0.95rem; 
-  font-weight: 500; 
-  display: flex; 
-  gap: 0.4rem; 
-  align-items: center; 
-  justify-content: center; 
+#weather {
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
 }
 #weather .weather-city{ font-weight: 500; }
 #weather .weather-icon{ font-size: 1.1rem; }
 #weather .weather-temp{ font-weight: 400; }
-
+ 
 /* TIME PANEL */
 #getCopenhagenTime{
   font-size: 4rem;
@@ -171,78 +171,97 @@ body{
   padding: 1.5rem;
   text-align: center;
 }
-
+ 
 /* MENU PANEL */
 #menu{
   display: flex;
   flex-direction: column;
-  gap: 35px;
-  padding: 20px;
+  gap: 0.2rem;
+  padding: 10px;
 }
-#menu h2{ text-align: center; font-size: 48px; font-weight: 400; }
-#menu .card{ 
+#menu h2{
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+#menu .card{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 15px;
-  border-radius: 15px;
+  padding: 12px;
+  border-radius: 40px;
   background: rgba(41,54,70,0.20);
   width: 100%;
   gap: 0.9rem;
-  margin-bottom: 1rem;
-
+  margin-bottom: 0.7rem;
   min-height: 90px;           /* adjust if needed */
   height: 90px;               /* fixed uniform height */
   overflow: hidden;    
   text-align: left;
 }
-#menu .card.today {
-  background: #da842884;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  font-weight: 300;
+#menu-card .dishes{
+  font-size: 1.6rem;
+  margin-left: 15px;
 }
-#menu .card h3,.dishes { 
-  font-weight: 300 !important;
-  color: #000; 
-}
-/* Today card stands out but NOT bold */
-#menu .card.today h3,
-#menu .card.today .dishes {
-  font-weight: 400 !important;
+#menu-card .day{
+  font-size: 1.6rem;
+  font-weight: 600;
   color: #000;
 }
 
-/* NEWS PANEL */
-#news{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-}
-#news h2{ 
-  text-align: center; 
-  font-size: 48px; 
-  font-weight: 400; 
-  margin: -1rem;
-  margin-bottom: 1rem;
-}
-#news .card.fade-in{
-  display: flex; 
-  flex-direction: column; 
-  border-radius: 30px; 
-  background: rgba(231,156,29, 0.44);
-  padding: 1rem; 
-  gap: 0.5rem; 
-  min-height: 12vh;
-}
-#news .card.fade-in a{ text-decoration: none; color: black; }
-#news .news-pair{
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between; 
-  gap: 10px;
+#menu .card.today {
+  background: #da842884;
+  font-weight: 400 !important;
+  font-size: 1.6rem;
+  color: #000;
+  margin-left: 0;
+  gap: 0rem;
 }
 
+/* Today card stands out but NOT bold */
+/* NEWS */
+/* H2 */
+#news h2{
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 0.6rem;
+}
+#news .card.fade-in{
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* <- Tvinger indholdet til at centrere horisontalt */
+  border-radius: 30px;
+  padding: 1rem;
+  gap: 0.5rem;
+  min-height: 12vh;
+  width: 100%;
+}
+ 
+/* Linket */
+#news .card.fade-in a{
+  display: block;
+  width: 100%;              /* <- Fylder hele bredden */
+  text-align: center;       /* <- Centrerer tekst i linket */
+  color: black;
+  font-size: 2rem;
+  text-decoration: none;
+}
+ 
+/* Dato-div */
+#news .date{           /* <- Fylder hele bredden */
+  text-align: center;       /* <- Centreret */
+  font-size: 1.4rem;
+}
+ 
+/* H5 */
+#news .card.fade-in h5{
+  text-align: center;
+  font-size: 1.4rem;
+}
+ 
 /* CONTENT PANEL */
 #content {
   display: flex;
@@ -254,33 +273,43 @@ body{
   position: relative;
 }
 #content h1{ text-align: center; font-size: 48px; font-weight: 400; margin-bottom: 2.5rem; }
-
+ 
 /* SCHEDULE CARDS */
-#content .schedule-card{ 
+#content .schedule-card{
   flex: 1 1 auto;
-  flex-direction: column; 
+  flex-direction: column;
   border-radius: 15px;
   margin-bottom: 10px;
   color: #fff;
-  padding: 12px 15px; 
-  width: 100%; 
+  padding: 12px 15px;
+  width: 100%;
   min-height: 90px;
-  font-weight: 500;
+  font-weight: 600;
+  
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-
+ 
 /* Cycle colors for schedule cards */
 /* ===== EDU COLORS ===== */
-.schedule-card.edu-praktik { background-color: #cb282d !important; }    /* Red */
-.schedule-card.edu-grafisk { background-color: #d79e5d !important; }    /* Yellow */
-.schedule-card.edu-web      { background-color: #1c2b36 !important; }    /* Blue */
-.schedule-card.edu-tryk     { background-color: #293646 !important; }    /* Orange */
-.schedule-card.edu-dataservice { background-color: #e79c1d !important; }
-.schedule-card.edu-studietid  { background-color: #293646 !important; }
-.schedule-card.edu-bonusfag   { background-color: #5a2a83 !important; }  /* Purple */
+.schedule-card.edu-praktik {
+  background-color: rgba(203, 40, 45, 0.7) !important;  /* 80% opacity */
+  color: #ffffff !important; /* Full opacity text */
+}
 
+.schedule-card.edu-grafisk {
+  background-color: rgba(215, 158, 93, 0.7) !important;
+  color: #000 !important;
+}
 
+.schedule-card.edu-web {
+  background-color: rgba(28, 43, 54, 0.7) !important;
+  color: #fff !important; /* Better contrast on dark background */
+}
 
+/* Ensure inner text never inherits low opacity */
+.schedule-card * {
+  opacity: 1 !important;
+}
 
 /* Ensure schedule cards allow proper centering */
 #content .schedule-card {
@@ -290,25 +319,25 @@ body{
   align-items: center;     /* horizontal center */
   text-align: center;
 }
-
+ 
 /* Row inside schedule card */
-.schedule-row { 
+.schedule-row {
   display: flex;
   align-items: center;     /* vertical center */
   justify-content: center; /* horizontal center */
   text-align: center;
-  width: 100%; 
-  gap: 10px; 
-  color: #fff; 
-  padding: 8px 0; 
-  border-radius: 10px; 
-  font-size: 16px; 
+  width: 100%;
+  gap: 10px;
+  color: #fff;
+  padding: 8px 0;
+  border-radius: 10px;
+  font-size: 16px;
 }
-
+ 
 /* Every text field inside the row */
 .schedule-title,
-.schedule-room, 
-.schedule-team, 
+.schedule-room,
+.schedule-team,
 .schedule-status {
   flex: 1;
   display: flex;
@@ -316,25 +345,32 @@ body{
   align-items: center;     /* vertical */
   text-align: center;
 }
-
+ 
 /* DEPARTURES PANEL */
-#departures{ 
+#departures{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 10px; 
-  border-radius: 40px; 
-  background: rgba(255,255,255,0.79); 
-  border: 3px solid rgba(255,255,255,0.789); 
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1); 
-  padding: 1rem; 
+  gap: 10px;
+  border-radius: 40px;
+  background: rgba(255,255,255,0.79);
+  border: 3px solid rgba(255,255,255,0.789);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1);
+  padding: 1rem;
 }
-#departures h2{ 
-  text-align: center; 
-  font-size: 48px; 
-  font-weight: 400; 
-  margin-bottom: 1.8rem; 
+#departures h2{
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 1.8rem;
+}
+#departures h3{
+  display: flex;
+  justify-content:flex-start;
+  text-align: left;
+  font-size: 28px;
+  font-weight: 700;  
 }
 #departures .card {
   min-height: 60px;
@@ -343,11 +379,11 @@ body{
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  align-items: center; 
-  background: rgba(41,54,70,0.20); border-radius: 20px; 
-  padding: 10px 30px; 
+  align-items: center;
+  background: rgba(41,54,70,0.20); border-radius: 40px;
+  padding: 10px 30px;
   }
-
+ 
 /* MEDIA QUERIES */
 @media (max-width:1000px){
   body{
@@ -360,25 +396,25 @@ body{
       "content";
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    padding: 1rem; 
+    padding: 1rem;
     overflow: auto;
   }
   #content,
-  #menu, 
-  #departures, 
-  #news, 
+  #menu,
+  #departures,
+  #news,
   #getCopenhagenTime,
-  #weather{ 
-    width: 100%; 
-    height: auto; 
-    transform: none; 
+  #weather{
+    width: 100%;
+    height: auto;
+    transform: none;
   }
 }
-
+ 
 @media (max-width:600px){
-  body{ 
-    padding: 0.8rem; 
-    gap: 0.8rem; 
+  body{
+    padding: 0.8rem;
+    gap: 0.8rem;
   }
   h2{ font-size: 1rem; }
   p{ font-size: 0.95rem; }

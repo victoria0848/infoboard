@@ -3,8 +3,7 @@ const rejsePlanUrl =
 
 async function getDepartures() {
   const res = await fetch(rejsePlanUrl);
-  if (!res.ok)
-    throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
+  if (!res.ok) throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
   return res.json();
 }
 
@@ -17,9 +16,8 @@ async function displayDepartures() {
 
   try {
     const data = await getDepartures();
-    console.log("Full API data:", JSON.stringify(data, null, 2));
 
-    // --- Normalize structure ---
+    // Normalize structure
     let departures = [];
     if (data.DepartureBoard?.Departure) {
       departures = Array.isArray(data.DepartureBoard.Departure)
@@ -28,9 +26,7 @@ async function displayDepartures() {
     } else if (data.Departure) {
       departures = Array.isArray(data.Departure) ? data.Departure : [data.Departure];
     } else if (data.departures) {
-      departures = Array.isArray(data.departures)
-        ? data.departures
-        : [data.departures];
+      departures = Array.isArray(data.departures) ? data.departures : [data.departures];
     } else {
       container.innerHTML = `<h2>Bustider</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
       return;
@@ -41,67 +37,59 @@ async function displayDepartures() {
       return;
     }
 
-    const now = new Date();
-    const timezone = "Europe/Copenhagen";
+    const now = new Date(); // local time (Copenhagen for DK users)
 
     const futureDepartures = departures
-      .map(dep => {
+      .map((dep) => {
         const dateStr = dep.date || new Date().toISOString().split("T")[0];
         const timeStr = dep.rtTime || dep.time;
         if (!timeStr) return null;
 
-        const [hours, minutes] = timeStr.split(":").map(Number);
-        const depDateTime = new Date(
-          new Date(dateStr).setHours(hours, minutes,)
-        );
+        // Build clean timestamp: YYYY-MM-DDTHH:mm:00
+        const ts = `${dateStr}T${timeStr}:00`;
+        const depDateTime = new Date(ts);
 
-        // Fix potential timezone mismatch by shifting to local Copenhagen time
-        const offset = new Date().toLocaleString("en-US", { timeZone: timezone });
-        const localNow = new Date(offset);
-
-        return { ...dep, depDateTime, localNow };
+        return { ...dep, depDateTime };
       })
-      .filter(dep => dep && dep.depDateTime > dep.localNow)
+      .filter((dep) => dep && dep.depDateTime > now)
       .sort((a, b) => a.depDateTime - b.depDateTime)
       .slice(0, 8);
 
-    // --- Render ---
     if (!futureDepartures.length) {
       container.innerHTML = "<h2>Bustider</h2><p>No upcoming departures.</p>";
       return;
     }
 
-container.innerHTML = `<h2>BUSTIDER</h2>` + futureDepartures
-  .map((dep, index) => {  // Add index parameter
-    const name = dep.name || dep.line || "Unknown";
-    const time = (dep.rtTime || dep.time || "").slice(0, 5);
-    const direction = dep.direction || "";
-    const type = dep.type || "";
-    const delay =
-      dep.rtTime && dep.rtTime !== dep.time
-        ? `<span style="color:#b1282c;; font-weight: 700;">F</span>`
-        : "";
+    container.innerHTML =
+      `<h2>BUSTIDER</h2>` +
+      futureDepartures
+        .map((dep, index) => {
+          const name = dep.name || dep.line || "Unknown";
+          const time = (dep.rtTime || dep.time || "").slice(0, 5);
+          const direction = dep.direction || "";
 
-    const minutesLeft = Math.round(
-      (dep.depDateTime - dep.localNow) / 60000
-    );
+          const delay =
+            dep.rtTime && dep.rtTime !== dep.time
+              ? `<span style="color:#b1282c; font-weight:700;">F</span>`
+              : "";
 
-    // Add pink background to first departure
-    const highlightStyle = index === 0 ? 'background-color: #d38e4584; color: #293646' : '';
+          const highlightStyle =
+            index === 0 ? 'background-color: #d38e4584; color: #293646;' : "";
 
-    return `
-      <div class="card departure-card" style="${highlightStyle}">
-        <h3>${name} ${type ? `` : ""}</h3>
-        ${direction ? `<div><h3><strong></strong> ${direction}</h3></div>` : ""}
-        ${time ? `<div><h3><strong></strong>${delay} ${time} </h3></div>` : ""}
-      </div>
-    `;
-  })
-  .join("");
+          return `
+          <div class="card departure-card" style="${highlightStyle}">
+            <h3>${name}</h3>
+            ${direction ? `<div><h3>${direction}</h3></div>` : ""}
+            ${time ? `<div><h3>${delay} ${time}</h3></div>` : ""}
+          </div>
+        `;
+        })
+        .join("");
 
   } catch (err) {
     console.error("Full error:", err);
-    container.innerHTML = `<h2>Bustider</h2><p style="color:red;">Error: ${err.message}</p>`;
+    container.innerHTML = `<h2>Bustider</h2><p style="color:red;">Vi kan desværre ikke få fat i bustiderne lige pt<br>
+    Vi arbejder på det! :)</p>`;
   }
 }
 
@@ -111,4 +99,4 @@ if (document.readyState === "loading") {
   displayDepartures();
 }
 
-setInterval(displayDepartures, 1 * 1000); // update every 30 seconds
+setInterval(displayDepartures, 10000); // update every 5 seconds
