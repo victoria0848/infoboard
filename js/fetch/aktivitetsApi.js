@@ -102,9 +102,9 @@ function makeCard(item) {
     const eduClass = getEducationClass(item);
 
     return `
-        <div class="schedule-card ${eduClass}">
+        <div  class="schedule-card ${eduClass}">
             <div class="schedule-row">
-                <div class="schedule-title">${subject}</div>
+                <div style="text-transform:uppercase;" class="schedule-title">${subject}</div>
                 <div class="schedule-room">${room}</div>
                 <div class="schedule-team">${team}</div>
                 <div class="schedule-status">${statusText}</div>

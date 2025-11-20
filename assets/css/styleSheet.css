@@ -273,77 +273,95 @@ body{
   position: relative;
 }
 #content h1{ text-align: center; font-size: 48px; font-weight: 400; margin-bottom: 2.5rem; }
- 
-/* SCHEDULE CARDS */
-#content .schedule-card{
-  flex: 1 1 auto;
+
+#content .schedule-card {
+  display: flex;
   flex-direction: column;
-  border-radius: 15px;
-  margin-bottom: 10px;
-  color: #fff;
-  padding: 12px 15px;
+  justify-content: space-between;
+  align-items: center;
+
   width: 100%;
   min-height: 90px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+
+  border-radius: 15px;
   font-weight: 600;
-  
+  text-align: center;
+
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
- 
-/* Cycle colors for schedule cards */
+#content .schedule-card div {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+#content .schedule-card .schedule-status {
+  display: flex;
+  justify-content: right;
+  margin-right: 1rem;
+
+}
+#content .schedule-card .schedule-team {
+  display: flex;
+  justify-content: left;
+  margin-left: 8rem;
+
+}
+#content .schedule-card .schedule-room {
+  display: flex;
+  justify-content: left;
+  margin-left: 2rem;
+
+}
 /* ===== EDU COLORS ===== */
 .schedule-card.edu-praktik {
-  background-color: rgba(203, 40, 45, 0.7) !important;  /* 80% opacity */
-  color: #ffffff !important; /* Full opacity text */
+  background-color: rgba(203, 40, 45, 0.8) !important;
+  color: #fff !important;
 }
 
 .schedule-card.edu-grafisk {
-  background-color: rgba(215, 158, 93, 0.7) !important;
-  color: #000 !important;
+  background-color: rgba(215, 158, 93, 0.8) !important;
+  color: #ffffff !important;
 }
 
 .schedule-card.edu-web {
-  background-color: rgba(28, 43, 54, 0.7) !important;
-  color: #fff !important; /* Better contrast on dark background */
+  background-color: rgba(28, 43, 54, 0.8) !important;
+  color: #fff !important;
 }
 
-/* Ensure inner text never inherits low opacity */
+/* Ensure inner text stays fully visible */
 .schedule-card * {
   opacity: 1 !important;
 }
 
-/* Ensure schedule cards allow proper centering */
-#content .schedule-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertical center */
-  align-items: center;     /* horizontal center */
-  text-align: center;
-}
- 
-/* Row inside schedule card */
+/* ============================
+   ROW INSIDE CARD
+============================ */
 .schedule-row {
   display: flex;
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
-  text-align: center;
-  width: 100%;
-  gap: 10px;
-  color: #fff;
+  width: 100%;                 /* FULL WIDTH */
   padding: 8px 0;
+  gap: 10px;
+
+  justify-content: space-between;
+  align-items: center;
+
+  text-align: left;            /* More natural reading */
   border-radius: 10px;
   font-size: 16px;
+  color: inherit;              /* follows card color */
 }
- 
-/* Every text field inside the row */
+
+/* Text fields inside row */
 .schedule-title,
 .schedule-room,
 .schedule-team,
 .schedule-status {
   flex: 1;
   display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
-  text-align: center;
+  align-items: center;
+  justify-content: flex-start; /* left aligned */
+  text-align: left;
 }
  
 /* DEPARTURES PANEL */
@@ -382,6 +400,13 @@ body{
   align-items: center;
   background: rgba(41,54,70,0.20); border-radius: 40px;
   padding: 10px 30px;
+  }
+
+  #departures p{
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #000;
   }
  
 /* MEDIA QUERIES */
