@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 :root{
   --panel-bg: rgba(255,255,255,0.75);
   --panel-border: #5655550d;
@@ -10,7 +11,7 @@
 *{
   box-sizing: border-box;
   margin:0; padding:0;
-  font-family: "Inter", sans-serif;
+  font-family: "Syne", sans-serif;
 }
  
 html, body{
@@ -46,7 +47,6 @@ body{
  
   background: var(--panel-bg);
   border-radius: var(--panel-radius);
-  padding: 30px;
   border: 4px solid var(--panel-border);
  
   position: relative;
@@ -177,7 +177,7 @@ body{
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding: 10px;
+  padding: 1rem;
 }
 #menu h2{
   text-align: center;
@@ -189,7 +189,7 @@ body{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 12px;
+  padding: 1rem;
   border-radius: 40px;
   background: rgba(41,54,70,0.20);
   width: 100%;
@@ -205,8 +205,8 @@ body{
   margin-left: 15px;
 }
 #menu-card .day{
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 400;
   color: #000;
 }
 
@@ -221,13 +221,17 @@ body{
 
 /* Today card stands out but NOT bold */
 /* NEWS */
+#news{
+  padding: 0.3rem;
+}
 /* H2 */
 #news h2{
+  top: 0;
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 500;
   text-align: center;
-  margin-top: 0.7rem;
-  margin-bottom: 0.6rem;
+  margin-top: 0rem;
+  margin-bottom: 0.9rem;
 }
 #news .card.fade-in{
   display: flex;
@@ -239,27 +243,27 @@ body{
   min-height: 12vh;
   width: 100%;
 }
- 
 /* Linket */
 #news .card.fade-in a{
   display: block;
   width: 100%;              /* <- Fylder hele bredden */
   text-align: center;       /* <- Centrerer tekst i linket */
   color: black;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
+  font-weight: 400;
 }
- 
 /* Dato-div */
 #news .date{           /* <- Fylder hele bredden */
   text-align: center;       /* <- Centreret */
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  margin: 0;
 }
- 
 /* H5 */
 #news .card.fade-in h5{
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 300;
 }
  
 /* CONTENT PANEL */
@@ -268,11 +272,17 @@ body{
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  gap: 0.3rem;
   padding: 20px;
   max-height: 100%;
   position: relative;
 }
-#content h1{ text-align: center; font-size: 48px; font-weight: 400; margin-bottom: 2.5rem; }
+#content h1{ 
+  text-align: center; 
+  font-size: 48px; 
+  font-weight: 400; 
+  margin-bottom: 2.5rem; 
+}
 
 #content .schedule-card {
   display: flex;
@@ -294,6 +304,7 @@ body{
 #content .schedule-card div {
   width: 100%;
   margin-top: 0.2rem;
+  font-size: 1.2rem;
 }
 #content .schedule-card .schedule-status {
   display: flex;
@@ -310,7 +321,7 @@ body{
 #content .schedule-card .schedule-room {
   display: flex;
   justify-content: left;
-  margin-left: 2rem;
+  margin-left: 4rem;
 
 }
 /* ===== EDU COLORS ===== */
@@ -373,7 +384,6 @@ body{
   gap: 10px;
   border-radius: 40px;
   background: rgba(255,255,255,0.79);
-  border: 3px solid rgba(255,255,255,0.789);
   box-shadow: inset 0 0 8px rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1);
   padding: 1rem;
 }

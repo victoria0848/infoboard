@@ -45,8 +45,8 @@ async function displayNews() {
       return `
         <div class="card fade-in">
           <h3>${link ? `<a href="${link}" target="_blank">${title}</a>` : title}</h3>
-          ${pubDate ? `<div class="date"><strong>Udgivet:</strong> ${new Date(pubDate).toLocaleString('da-DK')}</div>` : ''}
-          ${author ? `<div class="author"><strong>Forfatter:</strong> ${author}</div>` : ''}
+          ${pubDate ? `<div class="date">Udgivet</strong> ${new Date(pubDate).toLocaleString('da-DK')}</div>` : ''}
+          ${author ? `<div class="author">Forfatter: ${author}</div>` : ''}
           ${description ? `<div class="description">${description}</div>` : ''}
           <h5>Kilde: DR DK</h5>
         </div>

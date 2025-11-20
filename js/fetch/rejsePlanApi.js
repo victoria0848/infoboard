@@ -88,7 +88,7 @@ async function displayDepartures() {
 
   } catch (err) {
     console.error("Full error:", err);
-    container.innerHTML = `<h2>Bustider</h2><p ">Vi kan desværre ikke få fat i bustiderne lige pt<br>
+    container.innerHTML = `<h2>BUSTIDER</h2><p>Vi kan desværre ikke få fat i bustiderne lige pt<br>
     Vi arbejder på det! :)</p>`;
   }
 }
